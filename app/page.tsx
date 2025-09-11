@@ -2,7 +2,7 @@
 
 import type React from 'react';
 import { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, Code, Star, ExternalLink } from 'lucide-react';
+import { ArrowRight, Sparkles, Users, ShieldCheck, Zap, Wallet } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Particles } from '@/components/ui/particles';
 import { Spotlight } from '@/components/ui/spotlight';
@@ -15,10 +15,10 @@ const brico = Bricolage_Grotesque({
 })
 
 const users = [
-  { imgUrl: 'https://avatars.githubusercontent.com/u/111780029' },
-  { imgUrl: 'https://avatars.githubusercontent.com/u/123104247' },
-  { imgUrl: 'https://avatars.githubusercontent.com/u/115650165' },
-  { imgUrl: 'https://avatars.githubusercontent.com/u/71373838' },
+  { imgUrl: './assets/abdul.png' },
+  { imgUrl: './assets/lucid.png' },
+  { imgUrl: './assets/john.png' },
+  { imgUrl: './assets/linda.png' },
 ];
 
 export default function Home() {
@@ -62,9 +62,9 @@ export default function Home() {
           className="border-primary/10 from-primary/15 to-primary/5 mb-8 inline-flex items-center gap-2 rounded-full border bg-gradient-to-r px-4 py-2 backdrop-blur-sm"
         >
           <img
-            src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+            src="./assets/easy2.png"
             alt="logo"
-            className="spin h-6 w-6"
+            className="animate-spin h-12 w-12"
           />
           <span className="text-sm font-medium">EasyLinc</span>
           <motion.div
@@ -97,16 +97,15 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.5 }}
           className="text-muted-foreground mt-2 mb-12 sm:text-lg"
         >
-          Be the first to access our revolutionary component library.
-          <br className="hidden sm:block" /> Build your MVP faster than ever
-          before.
+          Be the first to experience <span className='text-primary font-semibold underline'>Easylinc</span> the smarter way to connect with trusted service providers.
+          Find house helps, drivers, cleaners, and more, faster than ever before.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mb-12 grid grid-cols-2 gap-6 sm:grid-cols-3"
+          className="mb-12 grid grid-cols-2 gap-6 sm:grid-cols-4"
         >
           <div
             className={cn(
@@ -114,9 +113,9 @@ export default function Home() {
               resolvedTheme === 'dark' ? 'glass' : 'glass2',
             )}
           >
-            <Code className="text-primary mb-2 h-5 w-5" />
+            <Users className="text-primary mb-2 h-5 w-5" />
             <span className="text-xl font-bold">100+</span>
-            <span className="text-muted-foreground text-xs">Components</span>
+            <span className="text-muted-foreground text-xs">Service Providers</span>
           </div>
 
           <div
@@ -125,9 +124,9 @@ export default function Home() {
               resolvedTheme === 'dark' ? 'glass' : 'glass2',
             )}
           >
-            <ExternalLink className="text-primary mb-2 h-5 w-5" />
-            <span className="text-xl font-bold">Open Source</span>
-            <span className="text-muted-foreground text-xs">BSD 3-Clause</span>
+            <ShieldCheck className="text-primary mb-2 h-5 w-5" />
+            <span className="text-xl font-bold">Trusted</span>
+            <span className="text-muted-foreground text-xs">Background Verified</span>
           </div>
 
           <div
@@ -136,9 +135,19 @@ export default function Home() {
               resolvedTheme === 'dark' ? 'glass' : 'glass2',
             )}
           >
-            <Star className="text-primary mb-2 h-5 w-5" />
-            <span className="text-xl font-bold">Premium</span>
-            <span className="text-muted-foreground text-xs">Quality</span>
+            <Zap className="text-primary mb-2 h-5 w-5" />
+            <span className="text-xl font-bold">Fast</span>
+            <span className="text-muted-foreground text-xs">Easy Connections</span>
+          </div>
+          <div
+            className={cn(
+              'border-primary/10 flex flex-col items-center justify-center rounded-xl border bg-white/5 p-4 backdrop-blur-md',
+              resolvedTheme === 'dark' ? 'glass' : 'glass2',
+            )}
+          >
+            <Wallet className="text-primary mb-2 h-5 w-5" />
+            <span className="text-xl font-bold">Affordable</span>
+            <span className="text-muted-foreground text-xs">Fair Pricing</span>
           </div>
         </motion.div>
 
