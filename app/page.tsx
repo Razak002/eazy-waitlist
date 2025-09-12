@@ -37,10 +37,29 @@ export default function Home() {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSubmitted(true);
-    setIsSubmitting(false);
-  }
+
+    try {
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+      if (data.status === "ok") {
+        setSubmitted(true);
+      } else {
+        setError(data.message || "Something went wrong.")
+      }
+    } catch (err) {
+      setError("Network error, please try again")
+    } finally {
+      setIsSubmitting(false)
+    }
+  };
+
   return (
     <main className=" relative flex min-h-screen w-full  items-center justify-center overflow-hidden xl:h-screen">
       <Spotlight />
@@ -54,7 +73,6 @@ export default function Home() {
       />
 
       <div className="relative z-[100] mx-auto max-w-2xl px-4 py-16 text-center">
-        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
