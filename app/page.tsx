@@ -4,11 +4,10 @@ import type React from 'react';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, Users, ShieldCheck, Zap, Wallet } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Particles } from '@/components/ui/particles';
-import { Spotlight } from '@/components/ui/spotlight';
 import { useTheme } from 'next-themes';
 import { Bricolage_Grotesque } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const brico = Bricolage_Grotesque({
   subsets: ['latin']
@@ -62,22 +61,13 @@ export default function Home() {
 
   return (
     <main className=" relative flex min-h-screen w-full  items-center justify-center overflow-hidden xl:h-screen">
-      <Spotlight />
 
-      <Particles
-        className="absolute inset-0 z-0"
-        quantity={100}
-        ease={80}
-        refresh
-        color={color}
-      />
+      <div className="relative z-[100] mx-auto max-w-2xl px-4 py-8 text-center">
 
-      <div className="relative z-[100] mx-auto max-w-2xl px-4 py-16 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="border-primary/10 from-primary/15 to-primary/5 mb-8 inline-flex items-center gap-2 rounded-full border bg-gradient-to-r px-4 py-2 backdrop-blur-sm"
+        <Link
+          href="/about"
+          aria-label='About Eazy_Linc'
+          className="border-primary/10 from-primary/15 to-primary/5 mb-4 inline-flex items-center gap-2 rounded-md border bg-gradient-to-r px-4 backdrop-blur-sm"
         >
           <img
             src="./assets/easy2.png"
@@ -91,14 +81,15 @@ export default function Home() {
           >
             <ArrowRight className="h-4 w-4" />
           </motion.div>
-        </motion.div>
+        </Link>
+
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
           className={cn(
-            'from-foreground via-foreground/80 to-foreground/40 mb-4 cursor-crosshair bg-gradient-to-b bg-clip-text text-4xl font-bold text-transparent sm:text-7xl',
+            'from-foreground via-foreground/80 to-foreground/40 mb-4 bg-gradient-to-b bg-clip-text text-4xl font-bold text-transparent sm:text-7xl',
             brico.className,
           )}
         >
@@ -115,7 +106,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.5 }}
           className="text-muted-foreground mt-2 mb-12 sm:text-lg"
         >
-          Be the first to experience <span className='text-primary font-semibold underline'>Easylinc</span> the smarter way to connect with trusted service providers.
+          Be the first to experience   <Link href="/about" aria-label='About Eazy_Linc'> <span className='text-primary font-semibold underline'>Easylinc</span></Link> the smarter way to connect with trusted service providers.
           Find house helps, drivers, cleaners, and more, faster than ever before.
         </motion.p>
 
@@ -210,7 +201,7 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="group focus:ring-primary/50 relative overflow-hidden rounded-xl bg-gradient-to-b from-orange-500 to-orange-700 px-8 py-4 font-semibold text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] transition-all duration-300 hover:shadow-[#FF8C00]/50  focus:ring-2 focus:outline-none active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group focus:ring-primary/50 relative overflow-hidden rounded-xl cursor-pointer bg-gradient-to-b from-orange-500 to-orange-700 px-8 py-4 font-semibold text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] transition-all duration-300 hover:shadow-[#FF8C00]/50  focus:ring-2 focus:outline-none active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isSubmitting ? 'Joining...' : 'Join Waitlist'}
@@ -278,28 +269,6 @@ export default function Home() {
           </motion.span>
         </motion.div>
       </div>
-
-      <style jsx global>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0) translateX(0);
-            opacity: 0.3;
-          }
-          25% {
-            transform: translateY(-20px) translateX(10px);
-            opacity: 0.8;
-          }
-          50% {
-            transform: translateY(-40px) translateX(-10px);
-            opacity: 0.4;
-          }
-          75% {
-            transform: translateY(-20px) translateX(10px);
-            opacity: 0.6;
-          }
-        }
-      `}</style>
     </main>
   );
 }
