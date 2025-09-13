@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "EazyLinc - Connect with Trusted Service Providers",
   description: "Find and hire reliable house helps, drivers, cleaners, and more with ease. EazyLinc makes connecting with trusted service providers fast, safe, and affordable.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
